@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blogs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #fff;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        header {
+            font-size: 2em;
+            margin: 30px;
+        }
+        .blog-list {
+            max-width: 800px;
+            margin: 20px auto;
+            text-align: left;
+        }
+        .blog-item {
+            margin: 15px 0;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .blog-item:hover {
+            background-color: #f0f0f0;
+        }
+        .blog-item h2 {
+            margin: 0;
+            color: #000000; /* Light mode title color */
+        }
+        .blog-item h2 a {
+            text-decoration: none;
+        }
+        .blog-item p {
+            margin: 5px 0;
+            color: #555;
+        }
+        /* Dark Mode Styles */
+        body.dark-mode {
+            color: #fff;
+            background-color: #333;
+        }
+        body.dark-mode .blog-item {
+            border-color: #555;
+        }
+        body.dark-mode .blog-item:hover {
+            background-color: #444;
+        }
+        body.dark-mode .blog-item h2 {
+            color: #fefefe; /* Dark mode title color */
+        }
+        /* Dark Mode Toggle Button Styles */
+        .toggle-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #333;
+            transition: color 0.3s;
+        }
+        body.dark-mode .toggle-button {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <button class="toggle-button" onclick="toggleDarkMode()">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <header>My Blogs</header>
+
+    <div class="blog-list">
+        <div class="blog-item">
+            <h2><a href="_blogs/the-modern-ethical-problem.md" target="_blank">The Modern Ethical Problem</a></h2>
+        </div>
+        <div class="blog-item">
+            <h2><a href="_blogs/doors.md" target="_blank">Doors</a></h2>
+        </div>
+        <!-- Add more blog posts as needed -->
+    </div>
+
+    <script>
+        // Function to toggle dark mode and store the preference in localStorage
+        function toggleDarkMode() {
+            const body = document.body;
+            body.classList.toggle('dark-mode');
+            // Save the current dark mode state to localStorage
+            localStorage.setItem('darkMode', body.classList.contains('dark-mode'));
+            const icon = document.querySelector('.toggle-button i');
+            // Toggle between moon and sun icon
+            if (body.classList.contains('dark-mode')) {
+                icon.classList.replace('fa-moon', 'fa-sun');
+            } else {
+                icon.classList.replace('fa-sun', 'fa-moon');
+            }
+        }
+
+        // Check the stored dark mode preference on page load
+        window.onload = function() {
+            const darkMode = localStorage.getItem('darkMode') === 'true';
+            if (darkMode) {
+                document.body.classList.add('dark-mode');
+                // Set the icon to sun if dark mode is active
+                const icon = document.querySelector('.toggle-button i');
+                icon.classList.replace('fa-moon', 'fa-sun');
+            }
+        }
+    </script>
+</body>
+</html>
