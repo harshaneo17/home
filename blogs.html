@@ -36,14 +36,15 @@
         }
         .blog-item h2 {
             margin: 0;
-            color: #000000; /* Light mode title color */
-        }
-        .blog-item h2 a {
-            text-decoration: none;
         }
         .blog-item p {
             margin: 5px 0;
             color: #555;
+        }
+        .markdown-content {
+            max-width: 800px;
+            margin: 20px auto;
+            text-align: left;
         }
         /* Dark Mode Styles */
         body.dark-mode {
@@ -56,57 +57,27 @@
         body.dark-mode .blog-item:hover {
             background-color: #444;
         }
-        body.dark-mode .blog-item h2 {
-            color: #fefefe; /* Dark mode title color */
-        }
-        /* Dark Mode Toggle Button Styles */
-        .toggle-button {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            font-size: 24px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            color: #333;
-            transition: color 0.3s;
-        }
-        body.dark-mode .toggle-button {
-            color: #fff;
-        }
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
-    <button class="toggle-button" onclick="toggleDarkMode()">
-        <i class="fas fa-moon"></i>
-    </button>
-
     <header>My Blogs</header>
 
     <div class="blog-list">
         <div class="blog-item">
-            <h2><a href="blogs/the-modern-ethical-problem.md" target="_blank">The Modern Ethical Problem</a></h2>
-        </div>
-        <div class="blog-item">
-            <h2><a href="blogs/doors.md" target="_blank">Doors</a></h2>
+            <h2><a href="javascript:void(0);" onclick="loadMarkdown('_blogs/the-modern-ethical-problem.md')">The Modern Ethical Problem</a></h2>
         </div>
         <!-- Add more blog posts as needed -->
     </div>
+
+    <div class="markdown-content" id="markdownContent"></div>
 
     <script>
         // Function to toggle dark mode and store the preference in localStorage
         function toggleDarkMode() {
             const body = document.body;
             body.classList.toggle('dark-mode');
-            // Save the current dark mode state to localStorage
             localStorage.setItem('darkMode', body.classList.contains('dark-mode'));
-            const icon = document.querySelector('.toggle-button i');
-            // Toggle between moon and sun icon
-            if (body.classList.contains('dark-mode')) {
-                icon.classList.replace('fa-moon', 'fa-sun');
-            } else {
-                icon.classList.replace('fa-sun', 'fa-moon');
-            }
         }
 
         // Check the stored dark mode preference on page load
@@ -114,10 +85,19 @@
             const darkMode = localStorage.getItem('darkMode') === 'true';
             if (darkMode) {
                 document.body.classList.add('dark-mode');
-                // Set the icon to sun if dark mode is active
-                const icon = document.querySelector('.toggle-button i');
-                icon.classList.replace('fa-moon', 'fa-sun');
             }
+        }
+
+        // Function to load and display Markdown content
+        function loadMarkdown(file) {
+            fetch(file)
+                .then(response => response.text())
+                .then(data => {
+                    // Convert Markdown to HTML
+                    const html = marked(data);
+                    document.getElementById('markdownContent').innerHTML = html;
+                })
+                .catch(err => console.error('Error loading the markdown file:', err));
         }
     </script>
 </body>
