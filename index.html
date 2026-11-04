@@ -35,42 +35,55 @@
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "Person",
-        "@id": "https://harshaarya.com/#person",
-        "name": "Harsha Arya",
-        "alternateName": "Sriharsha Aryasomayajula",
-        "url": "https://harshaarya.com/",
-        "image": "https://harshaarya.com/assets/images/harsha-arya.jpg",
-        "description": "Machine learning engineer in Newcastle upon Tyne building computer vision and autonomy for subsea robots.",
-        "jobTitle": "Machine Learning Engineer",
-        "worksFor": {
-            "@type": "Organization",
-            "name": "SMD Ltd"
-        },
-        "alumniOf": [
+        "@graph": [
             {
-                "@type": "CollegeOrUniversity",
-                "name": "Kingston University"
+                "@type": "WebSite",
+                "@id": "https://harshaarya.com/#website",
+                "url": "https://harshaarya.com/",
+                "name": "Harsha Arya",
+                "alternateName": ["Sriharsha Aryasomayajula", "harshaarya.com"],
+                "inLanguage": "en-GB",
+                "publisher": { "@id": "https://harshaarya.com/#person" }
             },
             {
-                "@type": "CollegeOrUniversity",
-                "name": "ICFAI University"
+                "@type": "Person",
+                "@id": "https://harshaarya.com/#person",
+                "name": "Harsha Arya",
+                "alternateName": "Sriharsha Aryasomayajula",
+                "url": "https://harshaarya.com/",
+                "image": "https://harshaarya.com/assets/images/harsha-arya.jpg",
+                "description": "Machine learning engineer in Newcastle upon Tyne building computer vision and autonomy for subsea robots.",
+                "jobTitle": "Machine Learning Engineer",
+                "worksFor": {
+                    "@type": "Organization",
+                    "name": "SMD Ltd"
+                },
+                "alumniOf": [
+                    {
+                        "@type": "CollegeOrUniversity",
+                        "name": "Kingston University"
+                    },
+                    {
+                        "@type": "CollegeOrUniversity",
+                        "name": "ICFAI University"
+                    }
+                ],
+                "knowsAbout": [
+                    "computer vision",
+                    "deep learning",
+                    "subsea robotics",
+                    "autonomy",
+                    "ROS2",
+                    "C++",
+                    "edge AI"
+                ],
+                "sameAs": [
+                    "https://www.linkedin.com/in/harshaarya17",
+                    "https://github.com/harshaneo17",
+                    "https://www.youtube.com/@harshaneo17",
+                    "https://harshaarya.substack.com/"
+                ]
             }
-        ],
-        "knowsAbout": [
-            "computer vision",
-            "deep learning",
-            "subsea robotics",
-            "autonomy",
-            "ROS2",
-            "C++",
-            "edge AI"
-        ],
-        "sameAs": [
-            "https://www.linkedin.com/in/harshaarya17",
-            "https://github.com/harshaneo17",
-            "https://www.youtube.com/@harshaneo17",
-            "https://harshaarya.substack.com/"
         ]
     }
     </script>
@@ -427,6 +440,7 @@
             <ul>
                 <li><a href="#about">About</a></li>
                 <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
                 <li><a href="#talks">Talks</a></li>
                 <li><a href="#publications">Publications</a></li>
                 <li><a href="#recognition">Recognition</a></li>
@@ -465,6 +479,19 @@
                 <li>
                     <h3>Founder &amp; Robotics Engineer · <span class="org">Asimov Labs</span></h3>
                     <p class="meta">India · <time datetime="2017-02">Feb 2017</time> – <time datetime="2018-08">Aug 2018</time></p>
+                </li>
+            </ol>
+        </section>
+
+        <section id="education" aria-labelledby="education-heading">
+            <h2 id="education-heading">Education</h2>
+            <ol class="entries">
+                <li>
+                    <h3>MSc Mechatronics, with Distinction · <span class="org">Kingston University</span></h3>
+                </li>
+                <li>
+                    <h3>Mechanical Engineering · <span class="org">ICFAI University</span></h3>
+                    <p class="meta"><time datetime="2013-07">Jul 2013</time> – <time datetime="2017-07">Jul 2017</time></p>
                 </li>
             </ol>
         </section>
